@@ -5,6 +5,7 @@ import CitySearch from './CitySearch';
 
 import Event from './Event';
 import NumberOfEvents from './NumberOfEvents';
+import "./nprogress.css";
 
 class App extends Component {
   render() {
@@ -13,8 +14,6 @@ class App extends Component {
       <div className="App">
         <CitySearch />
         <EventList />
-        <Event />
-        <NumberOfEvents />
       </div>
     );
   }

@@ -3,11 +3,12 @@ import { shallow } from 'enzyme';
 import CitySearch from '../CitySearch';
 import { mockData } from "../mock-data";
 import { extractLocations } from "../api";
+let locations = extractLocations(mockData)
 
 describe('<CitySearch /> component', () => {
   let CitySearchWrapper;
   beforeAll(() => {
-    CitySearchWrapper = shallow(<CitySearch />);
+    CitySearchWrapper = shallow(<CitySearch locations={locations} />);
   });
 
   test('render text input', () => {

@@ -8,12 +8,14 @@ import { mockData } from "../mock-data";
 
 import EventList from '../EventList';
 import Event from '../Event';
-
+import { extractEvents } from "../api";
+const events = extractEvents(mockData);
 
 describe('<Event /> component', () => {
   let EventWrapper;
+
   beforeAll(() => {
-    EventWrapper = shallow(<Event />);
+    EventWrapper = shallow(<Event event={events[0]} />);
   });
 
   test('test that show/hide details button is rendered', () => {

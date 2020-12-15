@@ -2,15 +2,18 @@ import React, { Component } from "react";
 
 class Event extends Component {
   render() {
-    const { events } = this.props;
+    const { event } = this.props;
     return (
-      <ul className="EventList">
-        {events.map(event =>
-          <li>
-            <Event event={event} />
-          </li>
-        )}
-      </ul>
+      // <ul className="Event">   {/* or is className EventList here? */}
+      //   {events.map(event =>
+      //     <li>
+      //       <Event event={event} />
+      //     </li>
+      //   )}
+      // </ul>
+      <div>
+        {event.summary}
+      </div>
     );
   }
 }

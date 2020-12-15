@@ -16,7 +16,8 @@ describe('<NumberOfEvents /> component', () => {
 
 
   test('render number of events', () => {
-    const NumberOfEventsWrapper = shallow(<App />);
+    // const NumberOfEventsWrapper = shallow(<App />);
+    console.log("NumberOfEventsWrapper======", NumberOfEventsWrapper.props())
     expect(NumberOfEventsWrapper.find('.numberOfEvents label')).toHaveLength(1);
   });
 });
