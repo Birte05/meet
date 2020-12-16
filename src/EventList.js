@@ -5,9 +5,6 @@ import Event from './Event';
 class EventList extends Component {
   render() {
     const { events } = this.props;
-    if (!events) {
-      return 'There are no events to render!'
-    }
     return (
       <ul className="EventList">
         {events.map(event =>

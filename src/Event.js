@@ -1,18 +1,17 @@
 import React, { Component } from "react";
 
 class Event extends Component {
+  state = {
+    showDetails: false
+  }
   render() {
     const { event } = this.props;
     return (
-      // <ul className="Event">   {/* or is className EventList here? */}
-      //   {events.map(event =>
-      //     <li>
-      //       <Event event={event} />
-      //     </li>
-      //   )}
-      // </ul>
       <div>
-        {event.summary}
+        <div>{event.summary}</div>
+        <div>{event.location}</div>
+        <div>{event.start.dateTime}</div>
+      <button className="event__Overview" onClick={()=> this.setState({showDetails: !this.state.showDetails})}>Show details</button>
       </div>
     );
   }
