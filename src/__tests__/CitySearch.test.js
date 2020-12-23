@@ -8,7 +8,7 @@ let locations = extractLocations(mockData)
 describe('<CitySearch /> component', () => {
   let CitySearchWrapper;
   beforeAll(() => {
-    CitySearchWrapper = shallow(<CitySearch locations={locations} />);
+    CitySearchWrapper = shallow(<CitySearch locations={locations} updateEvents={() => {}} />);
   });
 
   test('render text input', () => {
@@ -59,12 +59,23 @@ describe('<CitySearch /> component', () => {
   });
 
   test('selecting a suggestion should change query state', () => {
-    CitySearchWrapper.setState({
-      query: '',
-      suggestions: locations
+
+      CitySearchWrapper.setState({
+        query: '',
+        suggestions: locations,
+      });
+      const suggestions = CitySearchWrapper.state('suggestions');
+      CitySearchWrapper.find('.suggestions li').at(0).simulate('click');
+      expect(CitySearchWrapper.state("query")).toBe(suggestions[0]);
+      expect(CitySearchWrapper.find('.suggestions').prop('style')).toEqual({ display: 'none' });
     });
-    const suggestions = CitySearchWrapper.state('suggestions');
-    CitySearchWrapper.find('.suggestions li').at(0).simulate('click');
-    expect(CitySearchWrapper.state("query")).toBe(suggestions[0]);
-  });
+
+    test("suggestions list will appear upon having a focus on city input field", () => {
+      CitySearchWrapper.setState({
+        query: '',
+        suggestions: locations,
+      });
+      CitySearchWrapper.find('.city').simulate('focus');
+      expect(CitySearchWrapper.find('.suggestions').prop('style')).toEqual({});
+    });
 });
