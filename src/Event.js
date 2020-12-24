@@ -6,12 +6,23 @@ class Event extends Component {
   }
   render() {
     const { event } = this.props;
+    const { showDetails } = this.state
     return (
-      <div>
-        <div>{event.summary}</div>
-        <div>{event.location}</div>
-        <div>{event.start.dateTime}</div>
-      <button className="event__Overview" onClick={()=> this.setState({showDetails: !this.state.showDetails})}>Show details</button>
+      <div className="event">
+        <div className="event__Overview">{event.summary}</div>
+        {/*  */}
+        <button
+          className="details-btn"
+          onClick={() => this.setState({ showDetails: !this.state.showDetails })}
+        >
+          {!showDetails ? 'Show details' : 'Hide details'}
+        </button>
+        {showDetails && (
+          <div className='event__Details'>
+            <div>{event.location}</div>
+            <div>{event.start.dateTime}</div>
+          </div>
+        )}
       </div>
     );
   }

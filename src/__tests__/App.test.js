@@ -21,9 +21,9 @@ describe('<App /> component', () => {
     expect(AppWrapper.find(CitySearch)).toHaveLength(1);
   });
 
-  test('render number of events', () => {
-    expect(AppWrapper.find(NumberOfEvents)).toHaveLength(1);
-  });
+  // test('render number of events', () => {
+  //   expect(AppWrapper.find(NumberOfEvents)).toHaveLength(1);
+  // });
 });
 
 // Task 4.4.
