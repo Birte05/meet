@@ -7,13 +7,17 @@ import Event from './Event';
 import NumberOfEvents from './NumberOfEvents';
 import "./nprogress.css";
 import { mockData } from "./mock-data";
+import { InfoAlert } from './Alert';
+import { ErrorAlert } from './Alert'
 
 
 class App extends Component {
   state = {
     locations: [],
     events: [],
-    numberOfEvents: 32
+    numberOfEvents: 32,
+    infoText: '',
+    errMessage: ''
   }
 
   componentDidMount() {
@@ -32,8 +36,7 @@ class App extends Component {
   // Task 4.4
   updateEvents = (location) => {
 
-    // this.setState({numberOfEvents: eventCount})
-    console.log(this.state)
+    //this.setState({numberOfEvents: eventCount})
     getEvents().then((events) => {
       const locationEvents = (location === 'all') ?
         events :
@@ -48,10 +51,13 @@ class App extends Component {
 
   render() {
     return (
-
       <div className="App">
+      <h1>List of Coding Events</h1>
+      <p>Choose your nearest location</p>
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
+        <InfoAlert className="Alert" text={this.state.infoText} />
         <EventList events={this.state.events} />
+        <ErrorAlert className="Alert" text={this.state.errMessage} />
       </div>
     );
   }
