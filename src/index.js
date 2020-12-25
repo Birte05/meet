@@ -8,8 +8,5 @@ import * as atatus from 'atatus-spa';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.register();
 atatus.config('f3dd420b22c04fc386c9fb2edfe48907').install();

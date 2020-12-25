@@ -67,6 +67,12 @@ export const getEvents = async (max_results = 32) => {
     return mockData; // makes sure mock data is used when local host is used, when online google data is fetched via api
   }
 
+  if (!navigator.onLine) {
+    const events = localStorage.getItem("lastEvents");
+    NProgress.done();
+    return { events: JSON.parse(events).events, locations:   extractLocations(JSON.parse(events).events) };
+  }
+
   const token = await getAccessToken();
 
   if (token) {
