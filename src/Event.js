@@ -10,7 +10,6 @@ class Event extends Component {
     return (
       <div className="event">
         <div className="event__Overview">{event.summary}</div>
-        {/*  */}
         <button
           className="details-btn"
           onClick={() => this.setState({ showDetails: !this.state.showDetails })}

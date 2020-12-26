@@ -7,8 +7,7 @@ import Event from './Event';
 import NumberOfEvents from './NumberOfEvents';
 import "./nprogress.css";
 import { mockData } from "./mock-data";
-import { InfoAlert } from './Alert';
-import { ErrorAlert } from './Alert'
+import { InfoAlert, ErrorAlert, OfflineAlert } from './Alert';
 
 
 class App extends Component {
@@ -17,7 +16,8 @@ class App extends Component {
     events: [],
     numberOfEvents: 32,
     infoText: '',
-    errMessage: ''
+    errMessage: '',
+    offlineText: ''
   }
 
   componentDidMount() {

@@ -21,7 +21,6 @@ class NumberOfEvents extends Component {
             errMessage: 'Please enter a number between 1 and 32.'
         })
     }
-    this.props.updateEvents('', event.target.value);
 };
 
 
@@ -29,13 +28,14 @@ class NumberOfEvents extends Component {
     const { numberOfEvents, handleEventCount } = this.props;
     return <div>
       <div className="numberOfEvents">
-        <ErrorAlert text={this.state.infoText} />
+        <ErrorAlert text={this.state.errMessage} />
         <label className="numberOfEvents">Number of events</label>
         <input
           type="text"
           className="sum"
           value={numberOfEvents}
           onChange={handleEventCount}
+          onChange={this.handleInputChanged}
         />
       </div>
     </div>
