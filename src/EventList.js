@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Event from './Event';
-import NumberOfEvents from './NumberOfEvents'
 
 class EventList extends Component {
   state = {
@@ -19,7 +18,6 @@ class EventList extends Component {
 
     return (
       <div>
-        <NumberOfEvents handleEventCount={this.handleEventCount} numberOfEvents={this.state.numberOfEvents} />
         <ul className="EventList">
           {renderedEvents.map(event =>
             <li key={event.id}>

@@ -3,7 +3,6 @@ import { shallow, mount } from 'enzyme';
 import App from '../App';
 import EventList from '../EventList';
 import CitySearch from '../CitySearch';
-import NumberOfEvents from '../NumberOfEvents';
 import { extractLocations, getEvents } from '../api';
 import { mockData } from "../mock-data";
 
