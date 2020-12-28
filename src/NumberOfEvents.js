@@ -11,7 +11,7 @@ class NumberOfEvents extends Component {
   handleInputChanged = (event) => {
     const value = event.target.value;
     this.setState({ numberOfEvents: value });
-    this.props.updateEvents(null, null, value);
+    this.props.updateEvents(null, value);
 
     if (event.target.value > 0 && event.target.value < 33) {
         this.setState({
@@ -31,7 +31,7 @@ class NumberOfEvents extends Component {
   render() {
     const { numberOfEvents } = this.props;
     return <div>
-      <div className="numberOfEvents">
+      <div className="numberOfEventsWrapper">
         <ErrorAlert text={this.state.errMessage} />
         <label className="numberOfEvents">Number of events</label>
         <input

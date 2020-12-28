@@ -2,12 +2,10 @@ import React, { Component } from 'react';
 import './App.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
-import { extractEvents, extractLocations, getEvents } from "./api";
-import Event from './Event';
+import { extractLocations, getEvents } from "./api";
 import NumberOfEvents from './NumberOfEvents';
 import "./nprogress.css";
-import { mockData } from "./mock-data";
-import { InfoAlert, ErrorAlert, OfflineAlert } from './Alert';
+import { InfoAlert, ErrorAlert } from './Alert';
 import {ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer} from 'recharts';
 import EventGenre from './EventGenre';
 
@@ -35,14 +33,14 @@ class App extends Component {
   }
 
   // Task 4.4
-  updateEvents = (location) => {
-
+  updateEvents = (location, numberOfEvents = this.state.numberOfEvents) => {
     getEvents().then((events) => {
-      const locationEvents = (location === 'all') ?
+      const locationEvents = (location === 'all' || !location) ?
         events :
         events.filter((event) => event.location === location);
       this.setState({
-        events:  locationEvents.slice(0, this.state.eventCount),
+        events:  locationEvents.slice(0, numberOfEvents),
+        numberOfEvents
       });
     });
   }
@@ -57,6 +55,12 @@ class App extends Component {
     return data;
   };
 
+  // handleEventCount = (event) => {
+  //   const value = event.target.value;
+  //   this.setState({ numberOfEvents: value });
+  // };
+
+
   render() {
     return (
       <div className="App">
@@ -69,7 +73,7 @@ class App extends Component {
         <ErrorAlert text={this.state.errMessage} />
 
       <div className='data-vis-wrapper'>
-        {/* <EventGenre events={events}/> */}
+        <EventGenre events={this.state.events}/>
 
         <ResponsiveContainer height={400} >
         <ScatterChart margin={{top: 20, right: 20, bottom: 20, left: 20,}}>

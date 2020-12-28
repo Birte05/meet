@@ -7,10 +7,10 @@ class EventList extends Component {
     numberOfEvents: 32,
   }
 
-  handleEventCount = (event) => {
-    const value = event.target.value;
-    this.setState({ numberOfEvents: value });
-  };
+  // handleEventCount = (event) => {
+  //   const value = event.target.value;
+  //   this.setState({ numberOfEvents: value });
+  // };
 
   render() {
     const { events } = this.props;
