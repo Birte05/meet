@@ -5,7 +5,7 @@ import CitySearch from './CitySearch';
 import { extractLocations, getEvents } from "./api";
 import NumberOfEvents from './NumberOfEvents';
 import "./nprogress.css";
-import { InfoAlert, ErrorAlert } from './Alert';
+import { InfoAlert, ErrorAlert, OfflineAlert } from './Alert';
 import {ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer} from 'recharts';
 import EventGenre from './EventGenre';
 
@@ -21,6 +21,13 @@ class App extends Component {
 
   componentDidMount() {
     this.mounted = true;
+
+    if (!navigator.onLine) {
+      this.setState({
+        offlineAlertText: 'No internet connenction found. Tha data shown is loaded from the cash.'
+      });
+    }
+
     getEvents().then((events) => {
       if (this.mounted) {
         this.setState({ events: events, locations: extractLocations(events) });
@@ -67,6 +74,7 @@ class App extends Component {
       <h1>List of Coding Events</h1>
 
       <p>Choose your nearest location</p>
+        <OfflineAlert text={this.state.offlineAlertText} />
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
         <InfoAlert className="info-text" text={this.state.infoText} />
         <NumberOfEvents numberOfEvents={this.state.result} updateEvents={this.updateEvents} />
@@ -85,9 +93,7 @@ class App extends Component {
         </ScatterChart>
         </ResponsiveContainer>
       </div>
-      <EventList events={this.state.events} />
-
-
+        <EventList events={this.state.events} />
       </div>
     );
   }
