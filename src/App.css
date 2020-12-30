@@ -63,6 +63,15 @@ input[type="number"] {
   position: relative;
 }
 
+.NumberOfEvents {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 300px;
+  max-width: 300px;
+  margin: auto;
+  position: relative;
+}
+
 .suggestions {
   width: 250px;
   position: absolute;

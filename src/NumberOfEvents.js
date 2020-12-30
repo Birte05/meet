@@ -31,7 +31,7 @@ class NumberOfEvents extends Component {
   render() {
     const { numberOfEvents } = this.props;
     return <div>
-      <div className="numberOfEventsWrapper">
+      <div className="NumberOfEvents">
         <ErrorAlert text={this.state.errMessage} />
         <label className="numberOfEvents">Number of events</label>
         <input
