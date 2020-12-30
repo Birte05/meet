@@ -17,8 +17,6 @@ const getData = () => {
 
   const COLORS = ['#0099FF', '#00CC99', '#FFCC33', '#FF9933', '#9966CC'];
 
-  console.log(events);
-
 return (
   <ResponsiveContainer height={400} >
       <PieChart width={400} height={400} >
@@ -38,7 +36,6 @@ return (
           </Pie>
       </PieChart>
   </ResponsiveContainer>
-
 );
 
 
