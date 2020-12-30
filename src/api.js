@@ -77,7 +77,7 @@ export const getEvents = async (max_results = 32) => {
 
   if (token) {
     removeQuery();
-    const url = `https://www.googleapis.com/calendar/v3/calendars/ZnVsbHN0YWNrd2ViZGV2QGNhcmVlcmZvdW5kcnkuY29t/events/${token}`; //YOUR_GET_EVENTS_API_ENDPOINT/${token}
+    const url = `https://16pqlknith.execute-api.eu-central-1.amazonaws.com/dev/api/get-events/${token}`; //YOUR_GET_EVENTS_API_ENDPOINT/${token}
     const result = await axios.get(url);
     if (result.data) {
       var locations = extractLocations(result.data.events);
