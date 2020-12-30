@@ -1,3 +1,5 @@
+// screen of meet app
+
 import React, { Component } from 'react';
 import './App.css';
 import EventList from './EventList';
